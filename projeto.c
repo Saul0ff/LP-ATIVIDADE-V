@@ -17,13 +17,13 @@ struct registro_funcionario
 
 void funcionario(struct registro_funcionario *funcionarios, int *quantidadeFuncionarios)
 {
-    printf("Nome do funcionário:");
+    printf("Nome do funcionÃ¡rio:");
     gets(funcionarios[*quantidadeFuncionarios].nome);
 
     printf("\n1- Matutino\n");
     printf("2- Vespertino\n");
     printf("3- Noturno\n");
-    printf("Turno do funcionário:\n");
+    printf("Turno do funcionÃ¡rio:\n");
     scanf("%d", &funcionarios[*quantidadeFuncionarios].turno);
 
     switch (funcionarios[*quantidadeFuncionarios].turno)
@@ -43,13 +43,13 @@ void funcionario(struct registro_funcionario *funcionarios, int *quantidadeFunci
     }
 
     fflush(stdin);
-    printf("Cargo do funcionário:\n");
+    printf("Cargo do funcionÃ¡rio:\n");
     gets(funcionarios[*quantidadeFuncionarios].cargo);
 
-    printf("Idade do funcionário:\n");
+    printf("Idade do funcionÃ¡rio:\n");
     scanf("%d", &funcionarios[*quantidadeFuncionarios].idade);
 
-    printf("Salário do funcionário:\n");
+    printf("SalÃ¡rio do funcionÃ¡rio:\n");
     scanf("%f", &funcionarios[*quantidadeFuncionarios].salario);
 
     getchar();
@@ -67,7 +67,7 @@ void amostrarFicha(struct registro_funcionario *funcionarios, char *funcionarioE
             printf("Turno: %s\n", funcionarios[i].turnoEscolhido);
             printf("Cargo: %s\n", funcionarios[i].cargo);
             printf("Idade: %d\n", funcionarios[i].idade);
-            printf("Salário: R$%.2f\n", funcionarios[i].salario);
+            printf("SalÃ¡rio: R$%.2f\n", funcionarios[i].salario);
             getchar();
             system("cls || clear");
         }
@@ -80,7 +80,7 @@ void formapagamento(struct registro_funcionario *funcionarios, char *funcionario
     int pagamento;
     printf("1 - Boleto\n");
     printf("2 - Pix\n");
-    printf("Qual forma de pagamento do salário do funcionário?\n");
+    printf("Qual forma de pagamento do salÃ¡rio do funcionÃ¡rio?\n");
     scanf("%d", &pagamento);
 
     fflush(stdin);
@@ -94,19 +94,19 @@ void formapagamento(struct registro_funcionario *funcionarios, char *funcionario
                 printf("Imprimindo Boleto...\n");
                 printf("Nome: %s\n", funcionarioEscolhido);
                 printf("Cargo: %s\n", funcionarios[i].cargo);
-                printf("Salário: R$%.2f\n", funcionarios[i].salario);
+                printf("SalÃ¡rio: R$%.2f\n", funcionarios[i].salario);
 
-                printf("Impressão concluída!\n");
+                printf("ImpressÃ£o concluÃ­da!\n");
                 
             }
             else if (pagamento == 2)
             {
-                printf("Gerando código pix...\n\n");
+                printf("Gerando cÃ³digo pix...\n\n");
                 sleep(2);
 
                 printf("045521123%s20%d.gov.br\n", funcionarioEscolhido, funcionarios[i].idade);
 
-                printf("Código gerado !\n");
+                printf("CÃ³digo gerado !\n");
         
             }
             getchar();
@@ -120,41 +120,43 @@ void alterarDados(struct registro_funcionario *funcionarios, char *funcionarioEs
     char opcao;
     for (i = 0; i < quantidadeFuncionarios; i++) {
         if (strcmp(funcionarios[i].nome, funcionarioEscolhido) == 0) {
-            printf("Funcionário: %s\n", funcionarioEscolhido);
+            printf("FuncionÃ¡rio: %s\n", funcionarioEscolhido);
             printf("Deseja alterar o turno ? s/n\n");
             scanf("%c", &opcao);
-                if (opcao == 's') {
                 fflush(stdin);
+                if (opcao == 's') {
                 printf("Qual turno deseja atualmente ?\n");
                 gets(funcionarios[i].turnoEscolhido);   
                 }
             
             printf("Deseja alterar o cargo ? s/n\n");
             scanf("%c", &opcao);
-                if (opcao == 's') {
                 fflush(stdin);
+                if (opcao == 's') {
                 printf("Qual cargo deseja atualmente ?\n");
                 gets(funcionarios[i].cargo);  
                 }
             
             printf("Deseja alterar a idade ? s/n\n");
             scanf("%c", &opcao);
-                if (opcao == 's') {
                 fflush(stdin);
+                if (opcao == 's') {
                 printf("Qual a idade atualmente ?\n");
                 scanf("%d", &funcionarios[i].idade);  
                 }   
 
             fflush(stdin);
             
-            printf("Deseja alterar o salário ? s/n\n");
+            printf("Deseja alterar o salÃ¡rio ? s/n\n");
             scanf("%c", &opcao);
-                if (opcao == 's') {
                 fflush(stdin);
-                printf("Qual o salário atual ?\n");
+                if (opcao == 's') {
+                printf("Qual o salÃ¡rio atual ?\n");
                 scanf("%f", &funcionarios[i].salario);  
                 }   
 
+            getchar();
+            system("cls || clear");
         }
     }
 } 
@@ -176,7 +178,7 @@ int main()
         printf("|3 - Formas de pagamento            |\n");
         printf("|4 - Alterar dados do funcionario   |\n");
         printf("|5 - Sair e Fechar o programa       |\n\n");
-        printf("Digite a opção desejada: ");
+        printf("Digite a opÃ§Ã£o desejada: ");
         scanf("%d", &opcao);
 
         system("cls || clear");
@@ -191,20 +193,20 @@ int main()
             break;
         case 2:
             fflush(stdin);
-            printf("Digite qual o funcionário: ");
+            printf("Digite qual o funcionÃ¡rio: ");
             gets(funcionarioEscolhido);
             system("cls || clear");
             amostrarFicha(funcionarios, funcionarioEscolhido, quantidadeFuncionarios);
             break;
         case 3:
             fflush(stdin);
-            printf("Digite qual o funcionário deseja para forma de pagamento: ");
+            printf("Digite qual o funcionÃ¡rio deseja para forma de pagamento: ");
             gets(funcionarioEscolhido);
             system("cls || clear");
             formapagamento(funcionarios, funcionarioEscolhido, quantidadeFuncionarios);
             break;
         case 4:
-            printf("Digite qual o funcionário: ");
+            printf("Digite qual o funcionÃ¡rio: ");
             gets(funcionarioEscolhido);
             system("cls || clear");
             alterarDados(funcionarios, funcionarioEscolhido, quantidadeFuncionarios);
